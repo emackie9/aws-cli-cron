@@ -1,5 +1,7 @@
 # aws-cli-cron
-Alpine image that has aws-cli installed and runs cron. Mount crontabs into `/cron` directory on the docker.
+Alpine image that has [aws-cli](https://github.com/aws/aws-cli) installed and runs cron. 
+- Mount AWS credentials into `/root/.aws` on the docker
+- Mount crontabs into `/cron` on the docker
 
 Example cron file:
 
@@ -17,6 +19,7 @@ docker run \
     --restart=always \
     --name=aws-cli-cron \
     --env TZ=America/Toronto \
+    -v ./.aws:/root/.aws
     -v ./cronfile:/cron/cronfile \
     -v ./sync_dir:/sync_dir \
     emackie/aws-cli-cron:latest 

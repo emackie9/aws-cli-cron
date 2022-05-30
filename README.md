@@ -14,9 +14,10 @@ Run it:
 
 ```bash
 docker run \
---restart=always \
---name=aws-cli-cron \
--v ./cronfile:/cron/cronfile \
--v ./sync_dir:/sync_dir \
-emackie/aws-cli-cron:latest 
+    --restart=always \
+    --name=aws-cli-cron \
+    --env TZ=America/Toronto \
+    -v ./cronfile:/cron/cronfile \
+    -v ./sync_dir:/sync_dir \
+    emackie/aws-cli-cron:latest 
 ```

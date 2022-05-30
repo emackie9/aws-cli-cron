@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  downloader:
+    build:
+      context: .
+    image: aws-cli-cron:latest
+    container_name: aws-cli-cron
+    volumes:
+      - ./.aws:/root/.aws
+      - ./tests:/tests
+      - ./aws-cli-cron:/cron/aws-cli-cron

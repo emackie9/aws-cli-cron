@@ -3,6 +3,7 @@ FROM alpine:3.16.0
 
 RUN apk add aws-cli
 RUN apk add dumb-init
+RUN apk add tzdata
 
 COPY ./docker-entrypoint .
 RUN chmod +x ./docker-entrypoint

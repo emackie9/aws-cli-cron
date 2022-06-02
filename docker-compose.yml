@@ -5,7 +5,16 @@ services:
       context: .
     image: aws-cli-cron:latest
     container_name: aws-cli-cron
+    environment:
+      - TZ=${TZ:-America/Toronto}
     volumes:
-      - ./.aws:/root/.aws
-      - ./tests:/tests
-      - ./aws-cli-cron:/cron/aws-cli-cron
+      - credentials:/root/.aws
+      - cron:/cron
+
+volumes:
+  credentials:
+    name: aws_credentials
+    driver: local
+  cron:
+    name: aws_cron
+    driver: local
